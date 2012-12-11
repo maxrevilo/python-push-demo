@@ -1,0 +1,26 @@
+/* Configurations file */
+
+var ops = {
+        /* Push Port (client application)*/
+        port      : 30000,
+        /*Application ID (client application)*/
+        appId     : '<<REPLACE BY APPID>>',
+        /*PPG Base URL with CPID  (Content Provider ID)*/
+        serverUrl : 'http://cp<<REPLACE BY CPID_NUMBER>>.pushapi.eval.blackberry.com',
+        wakeUpPage: 'index.html',
+        maxQueueCap: 100
+    },
+    base_url = "<<REPLACE BY AN URL to your machine>>",
+    register_url= base_url+"/register";
+
+//ERASE this after set the configurations:
+alert("You haven't set the configurations.js file.");
+
+/*
+    Notes:
+    * The data neccesary to fill ops is finded on the emails that
+      RIM sends you after the registration on BlackBerry Push Services.
+
+    * The url must be accesible from outside of the local net,
+      because RIM uses a proxy for blackberries communications.
+*/

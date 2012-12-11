@@ -1,0 +1,8 @@
+package my.android_test;
+
+public class Properties {
+    public static String SERVER_URL  = "<<REPLACE BY AN URL to your machine>>";
+    public static String SENDER_ID   = "<<SENDER_ID>>";
+    public static String REGISTER_URL= "/register";
+    public static String SYNC_URL    = "/sync";
+}

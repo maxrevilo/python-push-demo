@@ -1,0 +1,123 @@
+<!doctype html>
+<html class="no-js" lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Python Push Device management</title>
+        <link rel="icon" href="/static/favicon.ico" /> 
+        <meta name="viewport" content="width=device-width">
+        <link href="/static/css/bootstrap.min.css" rel="stylesheet"/>
+        <link href="/static/css/index.css" rel="stylesheet"/>
+        <script src="/static/js/jquery.min.js"></script>
+        <script type="text/javascript" async="" src="/static/js/bootstrap.min.js"></script>
+    </head>
+    <body>
+
+        <div class="container">
+            <h1>Python Push Device management</h1>
+            {% if devices %}
+                <form action="{%url send %}" method="POST">
+
+                    <table class="table table-striped table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Send</th>
+                                <th>Type</th>
+                                <th>Token</th>
+                                <th>Delete</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+
+                        {% for device in devices %}
+                            <tr>
+                                <td>
+                                    <input type="checkbox" name="device" value="{{device.id}}">
+                                </td>
+                                <td>
+                                    <img src="/static/img/logos/{{device.type}}.png">
+                                </td>
+                                <td>
+                                    {{device.token}}
+                                </td>
+                                <td >
+                                    <a  href="delete?id={{device.id}}"
+                                        class="btn btn-danger">
+                                        <i class="icon-remove"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+
+                        </tbody>
+                    </table>
+
+
+                    <div class="well">
+                        <legend>Push properties</legend>
+
+                        <ul class="nav nav-tabs">
+                            <li  class="active">
+                                <a href="#general" data-toggle="tab">General</a>
+                            </li>
+                            <li>
+                                <a href="#android" data-toggle="tab">Android</a>
+                            </li>
+                            <li>
+                                <a href="#blackberry" data-toggle="tab">Blackberry</a>
+                            </li>
+                        </ul>
+
+                        <div class="tab-content">
+
+                            <div id="general" class="row tab-pane active">
+
+                                <div class="span3">
+                                    <label class="checkbox">
+                                        <input type="checkbox" name="send_pcontent" disabled> Send push with content
+                                    </label>
+                                    <textarea name="pcontent" rows="2" placeholder="Push content" disabled></textarea>
+                                </div>
+
+                                <div class="span3">
+                                    <span class="help-block">Only aviable with advanced Demo</span>
+                                    <textarea name="scontent" rows="3" placeholder="Sync content"></textarea>
+                                </div>
+
+                            </div>
+
+                            <div id="android"  class="row tab-pane">
+                                <div class="span3">
+                                    <label>Collapsible Key</label>
+                                    <input type="text" name="collapsible_key" disabled>
+                                </div>
+                                
+                            </div>
+
+                            <div id="blackberry"  class="row tab-pane">
+                                <div class="span3">
+                                    ...
+                                </div>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary btn-block">
+                            Send Push
+                            <i class="icon-screenshot"></i>
+                        </button>
+                    </div>
+
+                <form>
+            {% else %}
+                <p>No devices registered.</p>
+            {% endif %}
+
+        <div>
+
+        <h5 align="center">
+            Built with Twitter's <a href="http://twitter.github.com/bootstrap">Bootstrap</a> toolkit and Icon from <a href="http://glyphicons.com/">Glyphicons</a>.
+        </h5>
+
+    </body>
+</html>

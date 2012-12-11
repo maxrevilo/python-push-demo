@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<widget xmlns="http://www.w3.org/ns/widgets"
+        xmlns:rim="http://www.blackberry.com/ns/widgets"
+        version="0.1.0.0" id="PythonPushDemo">
+
+    <name>PythonPush Demo</name>
+
+    <author href="https://github.com/maxrevilo/python-push">
+        Python Push
+    </author>
+
+    <icon src="icons/icon.png"/>
+
+    <content src="index.html"  rim:allowInvokeParams="true"></content>
+
+    <feature id="blackberry.system"/>
+    <feature id="blackberry.push"/>
+    <feature id="blackberry.utils"/>
+    <feature id="blackberry.invoke"/>
+
+    <feature id="blackberry.identity"/>
+    <feature id="blackberry.identity.phone"/>
+
+    <access subdomains="true" uri="*"/>
+    <rim:connection>
+        <id>BIS-B</id>
+        <id>TCP_WIFI</id>
+        <id>MDS</id>
+        <id>TCP_CELLULAR</id>
+        <id>WAP2</id>
+        <id>WAP</id>
+    </rim:connection>
+    
+</widget>

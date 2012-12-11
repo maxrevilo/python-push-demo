@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest
+      xmlns:android="http://schemas.android.com/apk/res/android"
+      package="my.android_test"
+      android:versionCode="1"
+      android:versionName="1.0">
+
+
+    <!-- Supported OS -->
+    <uses-sdk
+        android:minSdkVersion="8"
+        android:targetSdkVersion="15" />
+
+
+    <!-- PERMISSIONS: -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+
+
+    <!-- CUSTOM PERMISSIONS: -->
+    <permission android:name="my.android_test.permission.C2D_MESSAGE" android:protectionLevel="signature" />
+    <uses-permission android:name="my.android_test.permission.C2D_MESSAGE" /> 
+
+
+    <!-- APP -->
+    <application
+        android:label="@string/app_name"
+        android:icon="@drawable/ic_launcher">
+
+        <!-- Main Activity -->
+        <activity
+            android:name="MainActivity"
+            android:label="@string/app_name">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+
+        <!-- Push Reciver -->
+        <receiver
+            android:name="com.google.android.gcm.GCMBroadcastReceiver"
+            android:permission="com.google.android.c2dm.permission.SEND" >
+            <intent-filter>
+                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+                <action android:name="com.google.android.c2dm.intent.REGISTRATION" />
+                <category android:name="my.android_test" />
+            </intent-filter>
+        </receiver>
+
+        <!-- Push Handler Service -->
+        <service android:name=".GCMIntentService" />
+
+    </application>
+</manifest>
